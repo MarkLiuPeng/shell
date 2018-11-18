@@ -1,0 +1,170 @@
+
+
+#-----------------------------运算符及表达式和条件测试----------------
+#!/bin/bash
+#source,sh,./shell_name :shell脚本执行方法 
+#
+
+#变量
+						#declare :修饰
+x=10/2
+echo "$x"
+#将变量修饰为只读
+declare  -r x
+x="a"			#再次为变量赋值检验修饰
+echo "$x"
+|
+#将变量修饰为只为整数
+declare -i  x
+x=10
+echo "$x"
+							#typeset <=> declare
+y=8/2
+echo "$y"
+typeset	-i y
+y="b"
+echo "$y"
+
+ #x=1;
+ #w=9;
+ #let "x+1"
+ #echo "$x"
+ #y="$(x+w)";
+ #z="a";
+ #echo "$x $y $z";
+
+:<<cat
+Alias   rm="rm -i"
+
+#./home/user_name,/etc/profile,/etc/bashrc		用户shell的配置文件
+more shells			#shell的种类#打印当前使用shell类型
+echo "hello world"
+echo "$?"				#shell退出状态码<0-255>
+abc
+echo "$?"
+#exit 120
+#echo  "$?"
+cat
+
+:<<ftp  				#多行注释
+echo  "$#"     #返回传入参数的个数      #单行注释
+echo  "$@"
+echo  "$0"   #返回当前脚本的名称
+echo  "$_"
+echo  "$*"    #分别列出参数
+
+
+#!/bin/bash
+#关于引号 
+"":除$,/(转义)等自身
+'':自身
+``:shell命令
+
+test [ 1 -eq 2]
+
+
+echo "$$"		#进程pid
+echo "$0"		#脚本名称
+echo "$1\=$1$2\=$2$4\=$4"
+				#环境变量	
+echo "$pwd"
+echo "$LOGINAME"
+echo "$SHELL    '当前shell的版本是'  $BASH_VERSION" 
+set | more			#显示可建立的全部环境变量
+
+x=123
+unset $x			#清除变量
+echo $x
+
+
+cd /bin
+ls t*			#通配开头
+
+x=`pwd`
+echo "cureent directory is $x"
+echo 'cureent directory is $x'
+
+#echo ${x}abc			#"{}变量分界符"
+:<<FTP
+echo "开始你的程序"
+read  "$z"
+echo "当前所在的目录是 `pwd` and 你主机的地址是 `ifconfig`"
+echo "程序结束"
+						#运算对象之间必须要有空格
+
+result=`expr  3 / 2`
+echo "$result"								#expr:算数计算符
+#result=`expr  \(1 * 2\)\ + 1`
+#echo "$result"
+
+result=$(( 10 + 90  / 2 ))					#$(()):算数运算符
+echo  "$result"
+
+											#$[]算数运算符
+result=$[ 5*2 ]
+echo "$result"
+
+n=1											#let算数运算符
+let n=n+1
+echo "$n" 
+
+result=`expr 4 +=  6`
+echo "$result"
+
+
+
+#!/bin/bash
+
+result=$((4 += 6))						#复合算数运算符
+echo "$result"
+
+:<<FTP							#位运算符
+x=let "2 >>  1 "				#2的二进制向右移一位
+echo "$x"
+y=$[ "$x" ~= 1 ]				#变量x与1异或
+echo "y"
+z=`expr 1 ^ 0`					#1和0取反
+echo $z 
+FTP
+result=$[ 2 << 1 ]
+echo "$result"
+x=1
+result=$[ x |= 2 ]					#位复合运算符
+echo "$result"
+
+
+y=5									#自增自减运算符
+result=$[ y+(++y) ]
+echo "$result"
+result=$((result++))
+echo "$result"
+result=$[ --result ]
+echo "$result"
+
+#法一:
+((x=201))							#二，八，十六进制
+echo "$x"
+((y=021))
+echo "$y"
+((z=0x21))
+echo "$z"
+#法二
+((x=2#201))
+echo "$x"
+((y=8#201))
+echo "$y"
+((z=16#201))
+echo "$z"
+
+
+#local:局部变量
+
+
+
+
+
+
+
+
+
+

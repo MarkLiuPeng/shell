@@ -1,0 +1,73 @@
+逻辑语句
+	     ====分支=====
+单分支
+if  test_option     ;then
+
+else
+
+
+fi	
+
+
+多分支
+if  test_option	;then
+
+elif	test_option;then
+
+else
+
+fi
+
+
+	   ======循环======
+for  var_option   in   range_option   
+do
+	
+
+
+done
+
+
+
+	  ======循环加分支===
+
+while   test_option
+do
+
+
+done
+
+
+
+
+
+util  test_option 
+do
+
+
+done
+
+
+
+
+
+case var_option  in
+	);;
+	);;
+	);;
+	esac
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
